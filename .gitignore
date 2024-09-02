@@ -1,0 +1,8 @@
+node_modules
+*-error.log
+*.log
+*.gz
+temp
+report.*.json
+*.pem
+dist
