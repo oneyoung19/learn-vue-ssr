@@ -5,7 +5,7 @@ const nodeExternals = require('webpack-node-externals')
 const baseConfig = require('./webpack.base.config.js')
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
 
-const entry = path.resolve(__dirname, '../entry-server.js')
+const entry = path.resolve(__dirname, '../ssr/entry-server.js')
 
 module.exports = merge(baseConfig, {
   mode: 'production',

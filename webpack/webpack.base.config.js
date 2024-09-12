@@ -71,9 +71,9 @@ module.exports = {
           to: path.resolve(__dirname, '../dist/index.html')
         },
         {
-          from: path.resolve(__dirname, '../server.js'),
+          from: path.resolve(__dirname, '../ssr/server.js'),
           to: path.resolve(__dirname, '../dist/server.js')
-        },
+        }
       ]
     })
   ]
