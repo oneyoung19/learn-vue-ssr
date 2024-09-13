@@ -70,6 +70,7 @@ module.exports = {
           from: path.resolve(__dirname, '../public/index.html'),
           to: path.resolve(__dirname, '../dist/index.html')
         },
+        // TODO: 研究一下插件，过滤掉该文件
         {
           from: path.resolve(__dirname, '../ssr/server.js'),
           to: path.resolve(__dirname, '../dist/server.js')
