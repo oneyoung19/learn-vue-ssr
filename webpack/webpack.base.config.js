@@ -5,6 +5,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const { StatsWriterPlugin } = require('webpack-stats-plugin')
 // Manifest清单
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
+// 删除assets
+const RemoveAssetsPlugin = require('@automattic/remove-asset-webpack-plugin')
 
 module.exports = {
   output: {
@@ -107,6 +109,12 @@ module.exports = {
         // return fileDescriptor.name !== '../server.js'
         return true
       }
+    }),
+    // Not work. Server.js is still in vue-ssr-client-manifest.json.
+    new RemoveAssetsPlugin({
+      assets: [
+        // '../server.js'
+      ]
     })
   ]
 }
