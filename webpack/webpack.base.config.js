@@ -3,6 +3,8 @@ const { VueLoaderPlugin } = require('vue-loader')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 // 统计信息
 const { StatsWriterPlugin } = require('webpack-stats-plugin')
+// Manifest清单
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 
 module.exports = {
   output: {
@@ -99,6 +101,12 @@ module.exports = {
       //     })
       //   }, null, 2)
       // }
+    }),
+    new WebpackManifestPlugin({
+      filter (fileDescriptor) {
+        // return fileDescriptor.name !== '../server.js'
+        return true
+      }
     })
   ]
 }
