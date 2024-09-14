@@ -12,11 +12,21 @@ const { globSync } = require('glob')
 const serverBundle = require('./server/vue-ssr-server-bundle.json')
 const clientManifest = require('./client/vue-ssr-client-manifest.json')
 const { createBundleRenderer } = require('vue-server-renderer')
+
 const renderer = createBundleRenderer(serverBundle, {
   runInNewContext: false,
   template: fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf-8'),
-  clientManifest
+  clientManifest: deleteAssetsInClientManifest(clientManifest, ['../server.js'])
 })
+
+function deleteAssetsInClientManifest (clientManifest, assetsNameList = []) {
+  const { all: allAssets = [], async: asyncAssets = [], ...props } = clientManifest
+  return {
+    ...props,
+    all: allAssets.filter(asset => !assetsNameList.includes(asset)),
+    async: asyncAssets.filter(asset => !assetsNameList.includes(asset))
+  }
+}
 
 const staticPath = path.resolve(__dirname, './client')
 const staticFiles = globSync(['dist/client/**/*'], { nodir: true }).map(path => path.replace(/^dist\/client/, ''))
