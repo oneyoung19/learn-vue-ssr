@@ -1,6 +1,8 @@
 const path = require('node:path')
 const { VueLoaderPlugin } = require('vue-loader')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+// 统计信息
+const { StatsWriterPlugin } = require('webpack-stats-plugin')
 
 module.exports = {
   output: {
@@ -76,6 +78,27 @@ module.exports = {
           to: path.resolve(__dirname, '../dist/server.js')
         }
       ]
+    }),
+    new StatsWriterPlugin({
+      stats: {
+        all: true
+      },
+      // transform (data, opts) {
+      //   const { assets, ...props } = data
+      //   return JSON.stringify({
+      //     ...props,
+      //     assets: assets.map(item => {
+      //       if (item.type === 'assets by path') {
+      //         const { children, ...rest } = item
+      //         return {
+      //           ...rest,
+      //           children: children.filter(child => child.name !== '../server.js')
+      //         }
+      //       }
+      //       return item
+      //     })
+      //   }, null, 2)
+      // }
     })
   ]
 }
