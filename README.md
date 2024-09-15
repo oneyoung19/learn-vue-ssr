@@ -18,4 +18,8 @@
 
 ## 3.基于 `Vue2 + Webpack` 实现 `SSG`
 
-[prerender-spa-plugin](https://github.com/chrisvfritz/prerender-spa-plugin)
+
+笔者调研了两类插件，可以根据 `webpack` 版本自行选择：
+
+- `webpack@4`: [prerender-spa-plugin](https://github.com/chrisvfritz/prerender-spa-plugin)
+- `webpack@5`: [@prerenderer/webpack-plugin](https://www.npmjs.com/package/@prerenderer/webpack-plugin)
