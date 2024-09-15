@@ -45,7 +45,7 @@ module.exports = merge(baseConfig, {
     // injectProperty inject not work...
     new PrerendererWebpackPlugin({
       // indexPath: path.resolve(__dirname, '../dist'),
-      routes: ['/', '/about'],
+      routes: ['/', '/about', '/about/child'],
       // renderer: '@prerenderer/renderer-puppeteer',
       // renderer: '@prerenderer/renderer-jsdom',
       rendererOptions: {

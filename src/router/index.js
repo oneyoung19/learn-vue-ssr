@@ -21,7 +21,17 @@ export function createRouter () {
         meta: {
           title: 'About'
         },
-        component: () => import(/* webpackChunkName: "about" */ '../pages/About.vue')
+        component: () => import(/* webpackChunkName: "about" */ '../pages/About.vue'),
+        children: [
+          {
+            name: 'AboutChild',
+            path: 'child',
+            meta: {
+              title: 'About Child'
+            },
+            component: () => import(/* webpackChunkName: "about-child" */ '../pages/AboutChild.vue')
+          }
+        ]
       }
     ]
   })
