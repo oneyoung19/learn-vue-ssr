@@ -17,7 +17,8 @@ module.exports = merge(baseConfig, {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"production"'
+      'process.env.NODE_ENV': '"production"',
+      'process.env.VUE_ENV': '"SSG"'
     }),
     new HtmlWebpackPlugin({
       title: 'PRODUCTION prerender-spa-plugin',
@@ -25,17 +26,17 @@ module.exports = merge(baseConfig, {
       // filename: path.resolve(__dirname, 'dist/index.html'),
       favicon: path.resolve(__dirname, '../public/favicon.ico')
     }),
-    new PrerenderSPAPlugin({
-      staticDir: path.join(__dirname, '../dist'),
-      routes: [ '/', '/about' ],
+    // new PrerenderSPAPlugin({
+    //   staticDir: path.join(__dirname, '../dist'),
+    //   routes: [ '/', '/about' ],
 
-      renderer: new Renderer({
-        inject: {
-          foo: 'bar'
-        },
-        headless: true,
-        renderAfterDocumentEvent: 'render-event'
-      })
-    })
+    //   renderer: new Renderer({
+    //     inject: {
+    //       foo: 'bar'
+    //     },
+    //     headless: true,
+    //     renderAfterDocumentEvent: 'render-event'
+    //   })
+    // })
   ]
 })

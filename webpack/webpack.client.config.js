@@ -30,7 +30,7 @@ module.exports = merge(baseConfig, {
           to: path.resolve(__dirname, '../dist/client/favicon.ico')
         },
         {
-          from: path.resolve(__dirname, '../public/index.html'),
+          from: path.resolve(__dirname, './template/index.html'),
           to: path.resolve(__dirname, '../dist/index.html')
         },
         {

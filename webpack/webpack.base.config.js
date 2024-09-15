@@ -71,38 +71,38 @@ module.exports = {
   },
   plugins: [
     new VueLoaderPlugin(),
-    new StatsWriterPlugin({
-      stats: {
-        all: true
-      },
-      // transform (data, opts) {
-      //   const { assets, ...props } = data
-      //   return JSON.stringify({
-      //     ...props,
-      //     assets: assets.map(item => {
-      //       if (item.type === 'assets by path') {
-      //         const { children, ...rest } = item
-      //         return {
-      //           ...rest,
-      //           children: children.filter(child => child.name !== '../server.js')
-      //         }
-      //       }
-      //       return item
-      //     })
-      //   }, null, 2)
-      // }
-    }),
-    new WebpackManifestPlugin({
-      filter (fileDescriptor) {
-        // return fileDescriptor.name !== '../server.js'
-        return true
-      }
-    }),
+    // new StatsWriterPlugin({
+    //   stats: {
+    //     all: true
+    //   },
+    //   // transform (data, opts) {
+    //   //   const { assets, ...props } = data
+    //   //   return JSON.stringify({
+    //   //     ...props,
+    //   //     assets: assets.map(item => {
+    //   //       if (item.type === 'assets by path') {
+    //   //         const { children, ...rest } = item
+    //   //         return {
+    //   //           ...rest,
+    //   //           children: children.filter(child => child.name !== '../server.js')
+    //   //         }
+    //   //       }
+    //   //       return item
+    //   //     })
+    //   //   }, null, 2)
+    //   // }
+    // }),
+    // new WebpackManifestPlugin({
+    //   filter (fileDescriptor) {
+    //     // return fileDescriptor.name !== '../server.js'
+    //     return true
+    //   }
+    // }),
     // Not work. Server.js is still in vue-ssr-client-manifest.json.
-    new RemoveAssetsPlugin({
-      assets: [
-        // '../server.js'
-      ]
-    })
+    // new RemoveAssetsPlugin({
+    //   assets: [
+    //     // '../server.js'
+    //   ]
+    // })
   ]
 }
