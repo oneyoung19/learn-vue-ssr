@@ -1,6 +1,5 @@
 const path = require('node:path')
 const { VueLoaderPlugin } = require('vue-loader')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 // 统计信息
 const { StatsWriterPlugin } = require('webpack-stats-plugin')
 // Manifest清单
@@ -11,6 +10,12 @@ const RemoveAssetsPlugin = require('@automattic/remove-asset-webpack-plugin')
 module.exports = {
   output: {
     clean: true
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, '../src')
+    },
+    extensions: ['.js', '.vue']
   },
   module: {
     rules: [
@@ -66,23 +71,6 @@ module.exports = {
   },
   plugins: [
     new VueLoaderPlugin(),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: path.resolve(__dirname, '../public/favicon.ico'),
-          to: path.resolve(__dirname, '../dist/client/favicon.ico')
-        },
-        {
-          from: path.resolve(__dirname, '../public/index.html'),
-          to: path.resolve(__dirname, '../dist/index.html')
-        },
-        // TODO: 研究一下插件，过滤掉该文件
-        {
-          from: path.resolve(__dirname, '../ssr/server.js'),
-          to: path.resolve(__dirname, '../dist/server.js')
-        }
-      ]
-    }),
     new StatsWriterPlugin({
       stats: {
         all: true

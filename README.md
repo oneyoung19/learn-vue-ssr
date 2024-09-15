@@ -16,5 +16,6 @@
 
 ![](https://raw.githubusercontent.com/oneyoung19/vuepress-blog-img/Not-Count-Contribution/img/20240902175441.png)
 
+## 3.基于 `Vue2 + Webpack` 实现 `SSG`
 
-
+[prerender-spa-plugin](https://github.com/chrisvfritz/prerender-spa-plugin)
